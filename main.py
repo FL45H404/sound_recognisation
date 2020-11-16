@@ -1,5 +1,5 @@
 import pyttsx3
-# import wikipedia
+import wikipedia
 import datetime
 import os
 import webbrowser
