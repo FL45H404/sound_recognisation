@@ -4,14 +4,16 @@ import datetime
 import os
 import webbrowser
 import speech_recognition as sr
+import json
 # import smtplib
 # from playsound import playsound
 from tkinter import *
 import subprocess  
 from PIL import ImageTk, Image
+with open('sound_recognisation\config.json','r+') as c:
+# with open('config.json','r') as c:
+    data=json.load(c)['param']
 print("INITIALIZING JARVIS....")
-
-master = "SAKSHAM SIR"
 
 engine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
@@ -28,17 +30,19 @@ def wishme():
     
     
     if hour>=0 and hour<12:
-        speak("Good morning" +master)
+        speak(f"Good morning +{data['username']}")
     elif hour>=12 and hour<18:
-        speak("Good Afternoon" +master)
+        speak(f"Good Afternoon {data['username']}")
     else:
-        speak("Good Evening" +master)        
-
+        speak(f"Good Evening {data['username']}")        
+        print(data['username'])
 def takecommmand():
 
 
     r=sr.Recognizer()
     with sr.Microphone() as source:
+        # r.pause_threshold=1
+        # r.energy_threshold=300
         print("Listening.....")
         audio=r.listen(source)
 
@@ -190,19 +194,7 @@ class Widget:
 
         elif 'what is your name' in query.lower():
             speak("jarvis sir")
-            
-        elif 'who made you' in query.lower():
-            speak("saksham sir")
-
-        elif 'ok google' in query.lower():
-            speak("thats not me sir....i am jarvis")
-
-        elif 'hey siri' in query.lower():
-            speak("i am jarvis sir,how can you forget something which is created by you sir") 
-
-        elif 'i want to be rich' in query.lower():
-            speak("so do i") 
-
+        
         elif 'sing me a song' in query.lower():
             speak("Alright sir! i will try for you")
             songs_dir="D:\\music\\songs" 
