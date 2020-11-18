@@ -60,7 +60,7 @@ def takecommmand():
 class Widget:
     def __init__(self):
        root = Tk()
-       root.title('Jarvis(Mark-1)')
+       root.title(f"{data['prtitle']}")
        root.config(background='Red')
        root.geometry('480x720')
        root.resizable(0, 0)
