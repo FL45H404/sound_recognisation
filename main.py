@@ -54,8 +54,6 @@ def takecommmand():
         speak("Say that again please")
         query= None
     return query
- 
-
 
 class Widget:
     def __init__(self):
@@ -145,13 +143,6 @@ class Widget:
             chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             webbrowser.get(chrome_path).open(url)
 
-        elif 'play music' in query.lower():
-            speak("Alright sir playing music")
-            songs_dir="D:\\music\\songs" 
-            songs=os.listdir(songs_dir)
-            print(songs)
-            os.startfile(os.path.join(songs_dir,songs[0]))
-
         elif 'play videos' in query.lower():
             speak("Alright here's some entertainment for you sir")
             video_dir="D:\\video"
@@ -169,13 +160,6 @@ class Widget:
             subprocess.call(["shutdown", "/l"])
         elif 'thank you' in query.lower():
             speak("Its my pleasure sir to always help you")
-
-
-        elif 'sorry' in query.lower():
-            speak("well if you really are then say it to my master") 
-
-        elif 'please' in query.lower():
-            speak("Don't say please sir!!!... I'm always here to help you")
 
         elif 'ek hi nara ek hi naam' in query.lower():
             speak("jay shree raam, jay shree raam")  
@@ -195,12 +179,12 @@ class Widget:
         elif 'what is your name' in query.lower():
             speak("jarvis sir")
         
-        elif 'sing me a song' in query.lower():
+        elif 'play song' in query.lower():
             speak("Alright sir! i will try for you")
             songs_dir="D:\\music\\songs" 
             songs=os.listdir(songs_dir)
             print(songs)
-            os.startfile(os.path.join(songs_dir,songs[30]))  
+            os.startfile(os.path.join(songs_dir,songs[(random.randrange(0,len(songs)))]))  
 
         elif 'can you laugh' in query.lower():
             speak("well if you really want so")
